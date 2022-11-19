@@ -8,9 +8,20 @@ namespace MyWebApp.Controllers
     {
         // GET: api/<CommandController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get([FromQuery] string? cmd, [FromQuery] string? str)
         {
-            return new string[] { "value1", "value2" };
+            if(!string.IsNullOrEmpty(cmd))
+            {
+                switch (cmd) 
+                {
+                    case "time":
+                        break;
+                    case "rev":
+                        break;
+                }
+            }
+
+            return Ok(DateTime.Now.ToString("HH:mm:ss"));
         }
     }
 }
