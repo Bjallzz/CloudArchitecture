@@ -15,13 +15,17 @@ namespace MyWebApp.Controllers
                 switch (cmd) 
                 {
                     case "time":
-                        break;
+                        return Ok(DateTime.Now.ToString("HH:mm:ss"));
                     case "rev":
-                        break;
+                        if(string.IsNullOrEmpty(str))
+                        {
+                            return BadRequest("Command rev was supplied but str parameter was null or empty");
+                        }
+                        return Ok(string.Concat(str.Reverse()));
                 }
             }
 
-            return Ok(DateTime.Now.ToString("HH:mm:ss"));
+            return Ok("Hello World");
         }
     }
 }
