@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Writers;
 using MyWebApp.Models;
 
 namespace MyWebApp.Controllers
@@ -10,14 +9,14 @@ namespace MyWebApp.Controllers
     {
 
         [HttpGet]
-        public IActionResult Get([FromQuery] string? str)
+        public IActionResult Get([FromQuery] StringRequest? stringRequest)
         {
-            if (str is null)
+            if (stringRequest?.Str is null)
             {
                 return BadRequest("No string was supplied");
             }
 
-            return Ok(DisassembleString(str));
+            return Ok(DisassembleString(stringRequest.Str));
         }
 
         private static StringBreakdown DisassembleString(string str)
